@@ -1,0 +1,32 @@
+!SESSION 2020-04-02 20:10:16.369 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_201
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+
+!ENTRY org.eclipse.osgi 4 0 2020-04-02 20:10:16.854
+!MESSAGE Error reading configuration: F:\Test SA\zzzzzzzzzzzzzzzzzzzzzzzzzz\Test osgi\.metadata\.plugins\org.eclipse.pde.core\OSGI MTIT Service\org.eclipse.osgi\.manager\.tmp2114557604198533416.instance (The process cannot access the file because it is being used by another process)
+!STACK 0
+java.io.FileNotFoundException: F:\Test SA\zzzzzzzzzzzzzzzzzzzzzzzzzz\Test osgi\.metadata\.plugins\org.eclipse.pde.core\OSGI MTIT Service\org.eclipse.osgi\.manager\.tmp2114557604198533416.instance (The process cannot access the file because it is being used by another process)
+	at java.io.RandomAccessFile.open0(Native Method)
+	at java.io.RandomAccessFile.open(Unknown Source)
+	at java.io.RandomAccessFile.<init>(Unknown Source)
+	at org.eclipse.osgi.internal.location.Locker_JavaNio.lock(Locker_JavaNio.java:36)
+	at org.eclipse.osgi.storagemanager.StorageManager.initializeInstanceFile(StorageManager.java:190)
+	at org.eclipse.osgi.storagemanager.StorageManager.open(StorageManager.java:707)
+	at org.eclipse.osgi.storage.Storage.getChildStorageManager(Storage.java:1776)
+	at org.eclipse.osgi.storage.Storage.getInfoInputStream(Storage.java:1793)
+	at org.eclipse.osgi.storage.Storage.<init>(Storage.java:132)
+	at org.eclipse.osgi.storage.Storage.createStorage(Storage.java:85)
+	at org.eclipse.osgi.internal.framework.EquinoxContainer.<init>(EquinoxContainer.java:68)
+	at org.eclipse.osgi.launch.Equinox.<init>(Equinox.java:31)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.startup(EclipseStarter.java:303)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:239)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1472)

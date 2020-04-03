@@ -1,0 +1,12 @@
+package servicepublisher;
+
+public interface ServicePublish {
+	
+	public String publishService();
+	
+	public boolean checkAvailability(String foodName);
+	
+
+	public boolean checkReply(int reply);
+
+}

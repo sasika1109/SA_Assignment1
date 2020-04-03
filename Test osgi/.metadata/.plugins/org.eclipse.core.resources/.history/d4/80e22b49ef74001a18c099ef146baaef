@@ -1,0 +1,31 @@
+package servicepublisher;
+
+public class ServicePublishImpl implements ServicePublish{
+
+	 String[] Stock =
+         { "Koththu", "Rice", "Parata", "Hoppers", "Stream hoppers" };
+	 
+	@Override
+	public String publishService() {
+		// TODO Auto-generated method stub
+		return "Execute the publish service of SericePublisher";
+	}
+
+	
+	public boolean checkAvailability(String word) 
+	{
+		
+	            word = word.toLowerCase();
+
+	            // This is very inefficient
+	            for (int i = 0; i < Stock.length; i++)
+	            {
+	                if (Stock[i].equals(word))
+	                {
+	                    return true;
+	                }
+	            }
+		return false;
+	}
+
+}

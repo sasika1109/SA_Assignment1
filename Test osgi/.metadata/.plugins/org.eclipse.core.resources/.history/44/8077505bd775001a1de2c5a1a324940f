@@ -1,0 +1,126 @@
+package servicesubscriber;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+import org.osgi.framework.BundleActivator;
+
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+
+import servicepublisher.ServicePublish;
+
+public class Activator implements BundleActivator {
+
+	ServiceReference serviceReference;
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
+	 */
+	public void start(BundleContext context) throws Exception {
+		System.out.println("start Subcriber Service");
+		serviceReference = context.getServiceReference(ServicePublish.class.getName());
+		ServicePublish servicePublish = (ServicePublish) context.getService(serviceReference);
+		System.out.println(servicePublish.publishService());
+		
+		try
+        {
+            System.out.println("Enter a blank line to exit.");
+            String foodName = "";
+            int reply;
+            int answer;
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            Scanner sc = new Scanner(System.in);
+            
+            while (true)
+            {
+                // Ask the user to enter a food.
+                System.out.print("Enter Food name: ");
+                foodName = in.readLine();
+                
+                if (foodName.length() == 0)
+                {
+                    break;
+                }
+                else if(servicePublish == null)
+                {
+                	System.out.println("No service avalable");
+                }
+                else if(servicePublish.checkAvailability(foodName))
+                {
+                	System.out.println(foodName + " is avaiable");
+                	System.out.println("Do you want?..\n"+"1 : yes \n"+"2 : No \n");
+                	System.out.println("Choose one of them: ");
+                	reply = sc.nextInt();
+                	 answer = servicePublish.checkReply(reply , foodName);
+                	if(answer == 0)
+                	{
+                		/*System.out.println("How many orders Do you want??");
+                		//we have to do more function 
+                		 break;*/
+                		System.out.println("Thanks you..Do you want anythings \n");
+                		System.out.println("1 : yes \n"+"2 : No \n");
+                    	System.out.println("Choose one of them: ");
+                		reply = sc.nextInt();
+                		
+                		if(servicePublish.checkReply1(reply))
+                		{
+                			
+                		}
+                		else
+                		{
+                			System.out.println("Thanks you..Good Bye \n");
+                			break;
+                		}
+                	}
+                	else
+                	{
+                		/*System.out.println("Thanks you..Do you want anythings \n");
+                		System.out.println("1 : yes \n"+"2 : No \n");
+                    	System.out.println("Choose one of them: ");
+                		reply = sc.nextInt();
+                		
+                		if(servicePublish.checkReply(reply))
+                		{
+                			
+                		}
+                		else
+                		{
+                			System.out.println("Thanks you..Good Bye \n");
+                			break;
+                		}*/
+                		System.out.println("Koththu price is : " + answer);
+                		System.out.println("How many orders Do you want??");
+                		reply = sc.nextInt();
+                		
+                		int bill =servicePublish.generateBill( reply ,  foodName);
+                		
+                		
+                		//we have to do more function 
+                		 break;
+                		
+                	}
+                	
+                
+                	
+                }
+                else
+                {
+                	System.out.println(foodName + " is not a aviable right now");
+                }
+            }
+        } catch (Exception ex) { }
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
+	 */
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("Good Bye!!");
+		context.ungetService(serviceReference);
+	}
+
+}

@@ -1,0 +1,9 @@
+package servicepublisher;
+
+public interface ServicePublish {
+	
+	public String publishService();
+	
+	public boolean checkWord(String word);
+
+}

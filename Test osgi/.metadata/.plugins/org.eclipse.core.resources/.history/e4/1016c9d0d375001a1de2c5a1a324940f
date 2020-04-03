@@ -1,0 +1,42 @@
+package servicepublisher;
+
+public class ServicePublishImpl implements ServicePublish{
+
+	 String[] Stock =
+         { "koththu", "rice", "parata", "hoppers", "stream hoppers" };
+	 
+	@Override
+	public String publishService() {
+		
+		return "Execute the publish service of SericePublisher";
+	}
+
+	
+	public boolean checkAvailability(String foodName) 
+	{
+		
+		foodName = foodName.toLowerCase();
+
+	            // This is very inefficient
+	            for (int i = 0; i < Stock.length; i++)
+	            {
+	                if (Stock[i].equals(foodName))
+	                {
+	                    return true;
+	                }
+	            }
+		return false;
+	}
+
+
+	
+	public boolean checkReply(int reply) {
+		
+		if(reply == 1) {
+			return true;
+		}
+		
+		return false;
+	}
+
+}

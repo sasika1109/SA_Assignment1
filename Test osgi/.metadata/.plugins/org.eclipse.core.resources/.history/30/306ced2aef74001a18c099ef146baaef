@@ -1,0 +1,68 @@
+package servicesubscriber;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import org.osgi.framework.BundleActivator;
+
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+
+import servicepublisher.ServicePublish;
+
+public class Activator implements BundleActivator {
+
+	ServiceReference serviceReference;
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
+	 */
+	public void start(BundleContext context) throws Exception {
+		System.out.println("start Subcriber Service");
+		serviceReference = context.getServiceReference(ServicePublish.class.getName());
+		ServicePublish servicePublish = (ServicePublish) context.getService(serviceReference);
+		System.out.println(servicePublish.publishService());
+		
+		try
+        {
+            System.out.println("Enter a blank line to exit.");
+            String word = "";
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            
+            while (true)
+            {
+                // Ask the user to enter a word.
+                System.out.print("Enter word: ");
+                word = in.readLine();
+                
+                if (word.length() == 0)
+                {
+                    break;
+                }
+                else if(servicePublish == null)
+                {
+                	System.out.println("No service avalable");
+                }
+                else if(servicePublish.checkWord(word))
+                {
+                	System.out.println("This is a vowel letter");
+                }
+                else
+                {
+                	System.out.println("This is not a vowel");
+                }
+            }
+        } catch (Exception ex) { }
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
+	 */
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("Good Bye!!");
+		context.ungetService(serviceReference);
+	}
+
+}
