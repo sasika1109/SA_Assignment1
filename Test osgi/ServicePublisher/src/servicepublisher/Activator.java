@@ -12,20 +12,23 @@ public class Activator implements BundleActivator {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
 		System.out.println("Publisher Start");
-		 Hashtable<String, String> props = new Hashtable<String, String>();
-	        props.put("Language", "English");
+		Hashtable<String, String> props = new Hashtable<String, String>();
+		props.put("Language", "English");
 		ServicePublish publisherService = new ServicePublishImpl();
-		publishServiceRegistration = context.registerService(
-				ServicePublish.class.getName(), publisherService, props);
+		publishServiceRegistration = context.registerService(ServicePublish.class.getName(), publisherService, props);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		System.out.println("Publisher Stop");
