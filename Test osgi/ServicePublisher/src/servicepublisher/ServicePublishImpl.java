@@ -3,7 +3,7 @@ package servicepublisher;
 public class ServicePublishImpl implements ServicePublish{
 
 	 String[] Stock =
-         { "koththu", "rice", "parata", "hoppers", "stream hoppers" };
+         { "koththu", "rice", "parata", "hoppers", "string hoppers" };
 	 
 	@Override
 	public String publishService() {
@@ -44,6 +44,14 @@ public class ServicePublishImpl implements ServicePublish{
 			int price = 60;
 			return price;
 		}
+		else if(reply == 1 && food.equals("hoppers")) {
+			int price = 25;
+			return price;
+		}
+		else if(reply == 1 && food.equals("string hoppers")) {
+			int price = 10;
+			return price;
+		}
 		else {
 			return 0;
 		}
@@ -77,6 +85,16 @@ public class ServicePublishImpl implements ServicePublish{
 		else if(food.equals("parata"))
 		{
 			int total = 60 * count;
+			return total;
+		}
+		else if(food.equals("hoppers"))
+		{
+			int total = 25 * count;
+			return total;
+		}
+		else if(food.equals("string hoppers"))
+		{
+			int total = 10 * count;
 			return total;
 		}
 		else {

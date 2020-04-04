@@ -9,7 +9,6 @@ INDEX VERSION 1.130+F:\Test SA\zzzzzzzzzzzzzzzzzzzzzzzzzz\Test osgi\.metadata\.p
 3698278747.index
 1897928139.index
 402782763.index
-617290997.index
 2953298812.index
 3861206012.index
 3498974549.index

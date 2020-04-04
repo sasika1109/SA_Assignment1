@@ -37,6 +37,7 @@ public class Activator implements BundleActivator {
             while (true)
             {
                 // Ask the user to enter a food.
+            	System.out.println("....................................................................... \n");
                 System.out.print("Enter Food name: ");
                 foodName = in.readLine();
                 
@@ -91,14 +92,14 @@ public class Activator implements BundleActivator {
                 			System.out.println("Thanks you..Good Bye \n");
                 			break;
                 		}*/
-                		System.out.println("Koththu price is : " + answer);
+                		System.out.println( foodName+" price is : " + answer);
                 		System.out.println("How many orders Do you want??");
                 		reply = sc.nextInt();
                 		
                 		int bill =servicePublish.generateBill( reply ,  foodName);
                 		
-                		System.out.println("Your Total bill = : "+ bill);
-                		
+                		System.out.println("Your Total bill = : "+ bill +".00 \n");
+                		System.out.println("Thank you for joined with us!! \n Good Bye ");
                 		
                 		//we have to do more function 
                 		 break;
