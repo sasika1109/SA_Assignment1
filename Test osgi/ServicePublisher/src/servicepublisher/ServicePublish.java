@@ -8,6 +8,7 @@ public interface ServicePublish {
 	
 
 	public int checkReply(int reply , String name);
+	
 	public boolean checkReply1(int reply);
 	
 	public int generateBill(int count , String food);
