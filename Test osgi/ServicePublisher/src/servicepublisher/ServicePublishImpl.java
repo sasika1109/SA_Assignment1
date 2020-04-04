@@ -2,12 +2,10 @@ package servicepublisher;
 
 public class ServicePublishImpl implements ServicePublish{
 
-	 String[] Stock =
-         { "koththu", "rice", "parata", "hoppers", "stream hoppers" };
+	String[] Stock = { "koththu", "rice", "parata", "hoppers", "stream hoppers" };
 	 
 	@Override
 	public String publishService() {
-		
 		return "Execute the publish service of SericePublisher";
 	}
 
